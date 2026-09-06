@@ -50,3 +50,7 @@ Every notebook contains buttons so that the notebook can be oppend and run on Go
 
 
 __NOTE:__ You may need to run the notebooks with a GPU. 
+
+## Contributing safely
+
+Read [the publication privacy boundary](PRIVACY.md) and install the local Git hooks before uploading changes. Private authoring stays outside public branches and PRs; intentional demo prompts and reviewed engineering evidence remain public.
