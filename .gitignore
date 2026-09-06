@@ -203,3 +203,6 @@ __pycache__/
 *.har
 private-authoring/
 transcripts/
+
+.envrc
+.envrc.*
