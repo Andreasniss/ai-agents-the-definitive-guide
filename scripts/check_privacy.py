@@ -134,12 +134,12 @@ def legacy_notebooks():
             if name.endswith('.ipynb') and mode == '100644'}
 
 
-def check_refs(refs):
+def check_refs(refs, metadata_only=()):
     failures = 0
     seen = set()
     baseline = legacy_notebooks()
     for ref in refs:
-        files = list(entries(ref))
+        files = [] if ref in metadata_only else list(entries(ref))
         baseline_key = json.dumps(baseline, sort_keys=True)
         for name, mode, oid in files:
             key = (name, mode, oid, baseline_key)
@@ -153,17 +153,19 @@ def check_refs(refs):
                 failures += 1
                 print('BLOCKED object ' + oid[:12] + ': ' + ', '.join(problems), file=sys.stderr)
         if ref != ':':
-            commit = git('rev-parse', ref + '^{commit}').decode().strip()
-            raw_commit = git('cat-file', 'commit', commit)
-            headers, message = raw_commit.split(b'\n\n', 1)
-            headers.decode('utf-8')
-            if b'\x00' in headers:
-                raise ValueError('invalid commit header text')
-            encodings = [line[9:].decode('ascii') for line in headers.splitlines() if line.startswith(b'encoding ')]
-            if len(encodings) > 1:
-                raise ValueError('ambiguous commit encoding')
-            normalized = normalize_bom(message.decode(encodings[0] if encodings else 'utf-8').encode('utf-8'))
-            metadata = [(commit, raw_commit + b'\n' + normalized)]
+            metadata = []
+            if ref not in metadata_only:
+                commit = git('rev-parse', ref + '^{commit}').decode().strip()
+                raw_commit = git('cat-file', 'commit', commit)
+                headers, message = raw_commit.split(b'\n\n', 1)
+                headers.decode('utf-8')
+                if b'\x00' in headers:
+                    raise ValueError('invalid commit header text')
+                encodings = [line[9:].decode('ascii') for line in headers.splitlines() if line.startswith(b'encoding ')]
+                if len(encodings) > 1:
+                    raise ValueError('ambiguous commit encoding')
+                normalized = normalize_bom(message.decode(encodings[0] if encodings else 'utf-8').encode('utf-8'))
+                metadata = [(commit, raw_commit + b'\n' + normalized)]
             current = git('rev-parse', ref).decode().strip()
             visited_tags = set()
             while git('cat-file', '-t', current).strip() == b'tag':
@@ -233,6 +235,7 @@ def main():
         refs = outgoing(*args.range)
     else:
         refs = []
+        metadata_only = set()
         for line in sys.stdin:
             local_ref, local_oid, remote_ref, remote_oid = line.split()
             if set(local_oid) == {'0'}:
@@ -253,11 +256,14 @@ def main():
                     except subprocess.CalledProcessError:
                         continue
                     exclusions.append('^' + oid)
-                refs.extend(git('rev-list', '--reverse', local_oid, *exclusions).decode().splitlines())
+                new_commits = git('rev-list', '--reverse', local_oid, *exclusions).decode().splitlines()
+                refs.extend(new_commits)
+                if not new_commits:
+                    metadata_only.add(local_oid)
             else:
                 refs.extend(outgoing(remote_oid, local_oid))
             refs.append(local_oid)  # Include annotated-tag metadata as well as commits.
-    return check_refs(list(dict.fromkeys(refs)))
+    return check_refs(list(dict.fromkeys(refs)), metadata_only if args.pre_push else ())
 
 
 if __name__ == '__main__':

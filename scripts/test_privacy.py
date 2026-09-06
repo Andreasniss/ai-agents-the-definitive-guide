@@ -172,6 +172,20 @@ class GitChecks(unittest.TestCase):
         line = 'refs/heads/topic ' + head + ' refs/heads/topic ' + '0' * 40 + '\n'
         self.assertEqual(self.check('--pre-push', 'origin', input_text=line).returncode, 0)
 
+    def test_tag_of_existing_remote_history_checks_only_new_metadata(self):
+        (self.root / '.env.local').write_text('OLD=sample')
+        self.git('add', '.')
+        self.git('commit', '-qm', 'Historical material')
+        self.git('push', 'origin', 'HEAD:refs/heads/history')
+        for tag, annotation, expected in [('plain', None, 0), ('annotated', 'Public tag', 0), ('private', 'PRIVATE' + '_ONLY', 1)]:
+            if annotation is None:
+                self.git('tag', tag)
+            else:
+                self.git('tag', '-a', tag, '-m', annotation)
+            oid = self.git('rev-parse', tag).strip()
+            line = 'refs/tags/' + tag + ' ' + oid + ' refs/tags/' + tag + ' ' + '0' * 40 + '\n'
+            self.assertEqual(self.check('--pre-push', 'origin', input_text=line).returncode, expected)
+
     def test_zero_base_excludes_existing_remote_history(self):
         p = self.root / '.env.local'
         p.write_text('OLD=sample')
