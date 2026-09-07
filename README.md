@@ -1,3 +1,13 @@
+> **About this fork:** Andreas Nissen keeps this personal learning copy of
+> [Nicolepcx/ai-agents-the-definitive-guide](https://github.com/Nicolepcx/ai-agents-the-definitive-guide).
+> The book, notebooks, and upstream documentation belong to their original authors;
+> this fork does not claim original authorship or publisher endorsement. Start with
+> the upstream instructions below. No repository license is declared here; consult
+> the upstream authors about reuse terms.
+>
+> Andreas's own projects and writing: [AndreasNissen.dev](https://andreasnissen.dev).
+> Fork-specific contribution guidance appears at the end of this README.
+
 ⭐ If you find this repository helpful, please consider giving it a ⭐ here on GitHub (click the star button in the top right corner) 
 It's a quick way to show support for this openly available code. ⭐
 
