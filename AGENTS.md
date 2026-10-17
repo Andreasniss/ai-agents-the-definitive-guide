@@ -6,8 +6,9 @@ Read `PRIVACY.md` before preparing any public commit or PR. Keep private authori
 
 This is a learning fork. README's introduction and contribution section own local
 fork context; the book, chapter notebooks and upstream instructions retain their
-authors' ownership. Keep local guide improvements in these fork-owned sections,
-preserve attribution, and do not infer a license from public availability.
+authors' ownership. Keep public-facing fork context in those README sections; operational instructions
+belong here and privacy rules belong in `PRIVACY.md`. Preserve attribution, and
+do not infer a license from public availability.
 
 For notebook work, inspect the selected chapter's setup and service calls before
 execution. A downloaded notebook or saved output is not a verified run. Report

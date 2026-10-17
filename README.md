@@ -15,7 +15,7 @@ It's a quick way to show support for this openly available code. ⭐
 
 # AI Agents - The definitive Guide
 This is the corresponding code for the book AI Agents - The Definitive Guide
-the book can be found [here](oreillymedia.pxf.io/POEx4e) and on [Amazon](https://www.amazon.com/Agents-Definitive-Deployment-Evaluation-Production/dp/B0GTYKTZHG/ref=sr_1_1?crid=3IKPXNW1IGD7V&dib=eyJ2IjoiMSJ9.n6XdCRmcIshseCli02TdjNbRQDKjQdxsP1qL6u931_bI2BtpzIRu5R9-o2YkOb_vzPUHPjhf4OoJU0trC-J3JmVQq6-SPw_ESya-oNpS-KR_8Z9BT3OiAZtJrwvA-MietSkrVBlK-0fs_pKJ5lgNNlF_oAxQYPzMOHeovQXa2dXt5D3LlnrVrZp_ZOQSQpMBJMGXrVKT4FSwOqW4ioOEhymB94LPQi3W15wVpSjkftM.tvvAb5_XOOez9Drd930kMnl_WBhjvEhzEp1C9miRRSc&dib_tag=se&keywords=ai+agents+the+definitive+guide&qid=1782032850&sprefix=ai+agents+the%2Caps%2C232&sr=8-1). The book has an [accompanying website](https://ai-agents-the-definitive-guide.com/) with quizzes and additional material, as well as a [Discord channel](https://discord.gg/pqeHTvzdhJ). 
+the book can be found [here](https://oreillymedia.pxf.io/POEx4e) and on [Amazon](https://www.amazon.com/Agents-Definitive-Deployment-Evaluation-Production/dp/B0GTYKTZHG/ref=sr_1_1?crid=3IKPXNW1IGD7V&dib=eyJ2IjoiMSJ9.n6XdCRmcIshseCli02TdjNbRQDKjQdxsP1qL6u931_bI2BtpzIRu5R9-o2YkOb_vzPUHPjhf4OoJU0trC-J3JmVQq6-SPw_ESya-oNpS-KR_8Z9BT3OiAZtJrwvA-MietSkrVBlK-0fs_pKJ5lgNNlF_oAxQYPzMOHeovQXa2dXt5D3LlnrVrZp_ZOQSQpMBJMGXrVKT4FSwOqW4ioOEhymB94LPQi3W15wVpSjkftM.tvvAb5_XOOez9Drd930kMnl_WBhjvEhzEp1C9miRRSc&dib_tag=se&keywords=ai+agents+the+definitive+guide&qid=1782032850&sprefix=ai+agents+the%2Caps%2C232&sr=8-1). The book has an [accompanying website](https://ai-agents-the-definitive-guide.com/) with quizzes and additional material, as well as a [Discord channel](https://discord.gg/pqeHTvzdhJ).
 
 ## TOC
 - Chapter 1 From LLMs to Agents: The Foundational Blueprint
@@ -64,3 +64,17 @@ __NOTE:__ You may need to run the notebooks with a GPU.
 ## Contributing safely
 
 Read [the publication privacy boundary](PRIVACY.md) and install the local Git hooks before uploading changes. Private authoring stays outside public branches and PRs; intentional demo prompts and reviewed engineering evidence remain public.
+
+### Fork navigation notes
+
+The checkout currently uses `CH01` through `CH05`, then lowercase `ch06` through
+`ch12`. Match case when selecting a path. The upstream example tree above lists
+`LICENSE` and `utils`, but neither is present in this fork; the no-license
+disclosure in the introduction still applies.
+
+Select a notebook from the actual tree and inspect its installation, data and
+remote-service prerequisites before execution. Some notebooks have no Colab link;
+existing buttons generally open the upstream copy rather than this fork. Saved
+outputs are historical examples, not proof of a current run. Record the selected
+notebook revision, environment and executed cells separately from unrun GPU or
+remote-model work. These notes supplement navigation without rewriting the book.
