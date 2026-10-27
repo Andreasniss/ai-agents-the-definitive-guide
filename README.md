@@ -1,12 +1,23 @@
-> **About this fork:** Andreas Nissen keeps this personal learning copy of
-> [Nicolepcx/ai-agents-the-definitive-guide](https://github.com/Nicolepcx/ai-agents-the-definitive-guide).
-> The book, notebooks, and upstream documentation belong to their original authors;
-> this fork does not claim original authorship or publisher endorsement. Start with
-> the upstream instructions below. No repository license is declared here; consult
-> the upstream authors about reuse terms.
->
-> Andreas's own projects and writing: [AndreasNissen.dev](https://andreasnissen.dev).
-> Fork-specific contribution guidance appears at the end of this README.
+# AI Agents: personal learning fork
+
+Andreas Nissen's learning copy of [Nicolepcx/ai-agents-the-definitive-guide](https://github.com/Nicolepcx/ai-agents-the-definitive-guide), the companion code for *AI Agents: The Definitive Guide*.
+
+The book, notebooks and upstream documentation belong to their original authors. This fork claims no original authorship or publisher endorsement. No repository license is declared here; ask the upstream authors about reuse terms.
+
+## Start with a chapter
+
+1. Choose a folder: `CH01` through `CH05`, then lowercase `ch06` through `ch12`.
+2. Open a notebook and inspect its installation, data, GPU and remote-service requirements before running cells.
+3. Use its Colab button when present. Buttons generally open the upstream copy, not this fork; some notebooks have no button.
+
+Saved outputs are historical examples, not proof of a current run. The upstream example tree mentions `LICENSE` and `utils`, but neither is present in this fork.
+
+[Book website and additional material](https://ai-agents-the-definitive-guide.com/).
+
+## Upstream documentation
+
+<details>
+<summary>Read the original book introduction and chapter list</summary>
 
 ⭐ If you find this repository helpful, please consider giving it a ⭐ here on GitHub (click the star button in the top right corner) 
 It's a quick way to show support for this openly available code. ⭐
@@ -61,20 +72,10 @@ Every notebook contains buttons so that the notebook can be oppend and run on Go
 
 __NOTE:__ You may need to run the notebooks with a GPU. 
 
+</details>
+
 ## Contributing safely
 
-Read [the publication privacy boundary](PRIVACY.md) and install the local Git hooks before uploading changes. Private authoring stays outside public branches and PRs; intentional demo prompts and reviewed engineering evidence remain public.
+Read [PRIVACY.md](PRIVACY.md) and install its local hooks before public uploads. Keep private authoring outside public branches and PRs. Record the notebook revision, environment and cells actually executed; label unrun GPU or remote-model work honestly.
 
-### Fork navigation notes
-
-The checkout currently uses `CH01` through `CH05`, then lowercase `ch06` through
-`ch12`. Match case when selecting a path. The upstream example tree above lists
-`LICENSE` and `utils`, but neither is present in this fork; the no-license
-disclosure in the introduction still applies.
-
-Select a notebook from the actual tree and inspect its installation, data and
-remote-service prerequisites before execution. Some notebooks have no Colab link;
-existing buttons generally open the upstream copy rather than this fork. Saved
-outputs are historical examples, not proof of a current run. Record the selected
-notebook revision, environment and executed cells separately from unrun GPU or
-remote-model work. These notes supplement navigation without rewriting the book.
+[Andreas's own projects and writing](https://andreasnissen.dev).
